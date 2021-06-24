@@ -15,6 +15,7 @@
 		B0055FB826818242004B8AC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0055FB726818242004B8AC0 /* Assets.xcassets */; };
 		B0055FC326818242004B8AC0 /* tap_tapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0055FC226818242004B8AC0 /* tap_tapTests.swift */; };
 		B0055FCE26818243004B8AC0 /* tap_tapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0055FCD26818243004B8AC0 /* tap_tapUITests.swift */; };
+		B081F2FE26848875003B7277 /* cal.png in Resources */ = {isa = PBXBuildFile; fileRef = B081F2FD26848875003B7277 /* cal.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		B0055FC926818243004B8AC0 /* tap tapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tap tapUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0055FCD26818243004B8AC0 /* tap_tapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tap_tapUITests.swift; sourceTree = "<group>"; };
 		B0055FCF26818243004B8AC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B081F2FD26848875003B7277 /* cal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cal.png; path = "../../../Dropbox/My Mac (takuminoMBP)/Downloads/cal.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		B0055F9E2681823E004B8AC0 = {
 			isa = PBXGroup;
 			children = (
+				B081F2FC268487A6003B7277 /* Resources */,
 				B0055FA92681823E004B8AC0 /* tap tap */,
 				B0055FC126818242004B8AC0 /* tap tapTests */,
 				B0055FCC26818243004B8AC0 /* tap tapUITests */,
@@ -126,6 +129,14 @@
 				B0055FCF26818243004B8AC0 /* Info.plist */,
 			);
 			path = "tap tapUITests";
+			sourceTree = "<group>";
+		};
+		B081F2FC268487A6003B7277 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B081F2FD26848875003B7277 /* cal.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +244,7 @@
 			files = (
 				B0055FB62681823E004B8AC0 /* Main.storyboard in Resources */,
 				B0055FAD2681823E004B8AC0 /* GameScene.sks in Resources */,
+				B081F2FE26848875003B7277 /* cal.png in Resources */,
 				B0055FB826818242004B8AC0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

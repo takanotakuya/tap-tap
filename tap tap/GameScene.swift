@@ -14,6 +14,14 @@ class GameScene: SKScene {
         // このシーンが表示されるタイミングで呼び出される
         // 主に初期化処理に使う
         print("[debug] didMove - celled.")
+        
+        // SKSpriteNode
+        var mainCharNode:SKSpriteNode = SKSpriteNode(imageNamed: "cal.png")
+        mainCharNode.alpha = 1 // 0 ~ 1
+        mainCharNode.position = CGPoint(x: 200, y: 100)
+        self.addChild(mainCharNode)
+        
+        self.backgroundColor = UIColor.white
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
