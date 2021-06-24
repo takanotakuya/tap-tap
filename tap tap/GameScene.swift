@@ -19,7 +19,7 @@ class GameScene: SKScene {
         
         // SKSpriteNode
         self.mainCharNode.alpha = 1 // 0 ~ 1
-        self.mainCharNode.position = CGPoint(x: 200, y: 100)
+        self.mainCharNode.position = CGPoint(x: 200, y: view.frame.height / -2 + 100)
         self.addChild(self.mainCharNode)
         
         self.backgroundColor = UIColor.white
@@ -35,6 +35,30 @@ class GameScene: SKScene {
         let jumpActions = SKAction.sequence([jumpUpAction, jumpDownAction ])
         
         self.mainCharNode.run(jumpActions)
+        
+        // gameover check
+        if self.isGameOver() == true {
+            let gameOverLabel = SKLabelNode()
+            gameOverLabel.text = "Game Over"
+            gameOverLabel.fontSize = 128
+            gameOverLabel.fontColor = UIColor.black
+            self.addChild(gameOverLabel)
+        }
+    }
+    
+    /**
+     Game over check
+     
+     true : game over
+     false : still okay
+     */
+    func isGameOver() -> Bool {
+        // screen pos 80% > char pos
+        // self.view!.frame.height // 画面のサイズ（高さ）
+        if self.mainCharNode.position.y > self.view!.frame.height / 2 - 100 {
+            return true
+        }
+        return false
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
