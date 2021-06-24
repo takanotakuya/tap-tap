@@ -10,26 +10,31 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    var mainCharNode:SKSpriteNode = SKSpriteNode(imageNamed: "cal.png")
+    
     override func didMove(to view: SKView) {
         // このシーンが表示されるタイミングで呼び出される
         // 主に初期化処理に使う
         print("[debug] didMove - celled.")
         
         // SKSpriteNode
-        var mainCharNode:SKSpriteNode = SKSpriteNode(imageNamed: "cal.png")
-        mainCharNode.alpha = 1 // 0 ~ 1
-        mainCharNode.position = CGPoint(x: 200, y: 100)
-        self.addChild(mainCharNode)
+        self.mainCharNode.alpha = 1 // 0 ~ 1
+        self.mainCharNode.position = CGPoint(x: 200, y: 100)
+        self.addChild(self.mainCharNode)
         
         self.backgroundColor = UIColor.white
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // 画面をタッチ開始した時に呼ばれる
-        var counter:Int = 0
-        counter = counter + 1
-        print("[debug] touchesBegan - called first")
-        print("[debug] touchesBegan - called second")
+        let movePos = CGPoint(x: self.mainCharNode.position.x, y: self.mainCharNode.position.y + 200)
+        let jumpUpAction = SKAction.move(to: movePos, duration: 0.2)
+        jumpUpAction.timingMode = .easeInEaseOut
+        let jumpDownAction = SKAction.move(to: self.mainCharNode.position, duration: 0.2)
+        jumpDownAction.timingMode = .easeInEaseOut
+        
+        let jumpActions = SKAction.sequence([jumpUpAction, jumpDownAction ])
+        
+        self.mainCharNode.run(jumpActions)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
