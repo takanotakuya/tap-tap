@@ -11,11 +11,13 @@ import GameplayKit
 class GameScene: SKScene {
     
     var mainCharNode:SKSpriteNode = SKSpriteNode(imageNamed: "cal.png")
+    let gameOverLabel = SKLabelNode()
     
     override func didMove(to view: SKView) {
         // このシーンが表示されるタイミングで呼び出される
         // 主に初期化処理に使う
-        print("[debug] didMove - celled.")
+        print("[debug] didMove - called.")
+        
         
         // SKSpriteNode
         self.mainCharNode.alpha = 1 // 0 ~ 1
@@ -23,9 +25,17 @@ class GameScene: SKScene {
         self.addChild(self.mainCharNode)
         
         self.backgroundColor = UIColor.white
+        self.addShark()
+        
+        gameOverLabel.text = "Game Over"
+        self.gameOverLabel.fontSize = 128
+        self.gameOverLabel.fontColor = UIColor.black
+        self.gameOverLabel.alpha = 0
+        self.addChild(gameOverLabel)
     }
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         let movePos = CGPoint(x: self.mainCharNode.position.x, y: self.mainCharNode.position.y + 200)
         let jumpUpAction = SKAction.move(to: movePos, duration: 0.2)
         jumpUpAction.timingMode = .easeInEaseOut
@@ -38,12 +48,9 @@ class GameScene: SKScene {
         
         // gameover check
         if self.isGameOver() == true {
-            let gameOverLabel = SKLabelNode()
-            gameOverLabel.text = "Game Over"
-            gameOverLabel.fontSize = 128
-            gameOverLabel.fontColor = UIColor.black
-            self.addChild(gameOverLabel)
+            self.gameOverLabel.alpha = 1 // 画面のゲームオーバー文字を表示
         }
+        
     }
     
     /**
@@ -63,12 +70,11 @@ class GameScene: SKScene {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         // タッチしている指が移動した時に呼ばれる
-        print("[debug] touchesMoved - celled.")
+        print("[debug] touchesMoved - called.")
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         // 画面から指が離れた時に呼ばれる
-        print("[debug] touchesEnded - \(updateCounter)")
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -76,12 +82,38 @@ class GameScene: SKScene {
         // 基本的に touchesEnded と同様の処理を行う
     }
     
-    var updateCounter:Int = 0
+    
     override func update(_ currentTime: TimeInterval) {
+        // 当たり判定
+        guard let node = self.childNode(withName: "fish") else { return }
+        let nodes = self.nodes(at: node.position)
+        if nodes.count > 1 {
+            self.gameOverLabel.alpha = 1
+        }
+    }
+    
+    
+    func addShark(){
+        let shark = SKSpriteNode(imageNamed: "shark.png")
+        let yPos = CGFloat(Int.random(in: 0 ..< Int(self.view!.frame.height))) - (self.view!.frame.height / 2)
         
-        updateCounter = updateCounter + 1
+        shark.name = "fish"
+        shark.position = CGPoint(
+            x:self.view!.frame.width * -1,
+            y:yPos
+        )
+        self.addChild(shark)
+        let moveAction = SKAction.moveTo(x: self.view!.frame.width, duration: 3)
+        shark.run(
+            SKAction.sequence([moveAction, SKAction.removeFromParent()])
+        )
         
-        // ゲームが60fpsで動作している時、１秒間に６０回呼び出される。
-        // 負荷などの理由により必ず同じタイミングで呼び出される訳ではないので引数の　currentTime　の差分だけ処理をする。
+        let sharkAttack = SKAction.run {
+            //
+            self.addShark()
+        }
+        let newSharkAction = SKAction.sequence([SKAction.wait(forDuration: 3), sharkAttack])
+        self.run(newSharkAction)
+        
     }
 }

@@ -16,6 +16,7 @@
 		B0055FC326818242004B8AC0 /* tap_tapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0055FC226818242004B8AC0 /* tap_tapTests.swift */; };
 		B0055FCE26818243004B8AC0 /* tap_tapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0055FCD26818243004B8AC0 /* tap_tapUITests.swift */; };
 		B081F2FE26848875003B7277 /* cal.png in Resources */ = {isa = PBXBuildFile; fileRef = B081F2FD26848875003B7277 /* cal.png */; };
+		B081F30026849031003B7277 /* shark.png in Resources */ = {isa = PBXBuildFile; fileRef = B081F2FF26849031003B7277 /* shark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		B0055FCD26818243004B8AC0 /* tap_tapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tap_tapUITests.swift; sourceTree = "<group>"; };
 		B0055FCF26818243004B8AC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B081F2FD26848875003B7277 /* cal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cal.png; path = "../../../Dropbox/My Mac (takuminoMBP)/Downloads/cal.png"; sourceTree = "<group>"; };
+		B081F2FF26849031003B7277 /* shark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shark.png; path = "../../../Dropbox/My Mac (takuminoMBP)/Downloads/shark.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				B081F2FD26848875003B7277 /* cal.png */,
+				B081F2FF26849031003B7277 /* shark.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B081F30026849031003B7277 /* shark.png in Resources */,
 				B0055FB62681823E004B8AC0 /* Main.storyboard in Resources */,
 				B0055FAD2681823E004B8AC0 /* GameScene.sks in Resources */,
 				B081F2FE26848875003B7277 /* cal.png in Resources */,
